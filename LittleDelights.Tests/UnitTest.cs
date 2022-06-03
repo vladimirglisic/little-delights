@@ -1,3 +1,4 @@
+using LittleDelights.Contract;
 using LittleDelights.Model.Entities;
 using LittleDelights.Model.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -24,16 +25,16 @@ namespace LittleDelights.Tests
             var wineRed112DaysOld = new Wine(_112DaysAgo, WineType.Red);
             var wineSparkling30DaysOld = new Wine(_30DaysAgo, WineType.Sparkling);
 
-            var chart = new Chart();
-            chart.AddItem(milkFresh.Id, 1);
-            chart.AddItem(milk2DaysOverBB.Id, 1);
-            //chart.AddItem(fish, 2);
-            chart.AddItem(wineRed10YearsOld.Id, 1);
-            chart.AddItem(wineRed112DaysOld.Id, 2);
-            chart.AddItem(wineSparkling30DaysOld.Id, 1);
+            ICart cart = new Cart();
+            cart.AddItem(milkFresh.Id, 1);
+            cart.AddItem(milk2DaysOverBB.Id, 1);
+            //cart.AddItem(fish, 2);
+            cart.AddItem(wineRed10YearsOld.Id, 1);
+            cart.AddItem(wineRed112DaysOld.Id, 2);
+            cart.AddItem(wineSparkling30DaysOld.Id, 1);
 
-            var checkout = new Checkout();
-            checkout.CreateReceipt(chart);
+            ICheckout checkout = new Checkout();
+            checkout.CreateReceipt(cart);
         }
     }
 }

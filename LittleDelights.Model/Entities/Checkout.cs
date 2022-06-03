@@ -11,9 +11,9 @@ namespace LittleDelights.Model.Entities
     {
         public Guid Id { get; set; }
 
-        public Guid ChartId { get; set; }
+        public Guid CartId { get; set; }
 
-        public virtual Chart Chart { get; set; }
+        public virtual Cart Cart { get; set; }
 
         public void CreateReceipt(ICart cart)
         {
