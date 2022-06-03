@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LittleDelights.Contract\LittleDelights.Contract.csproj" />
+    <ProjectReference Include="..\LittleDelights.Model\LittleDelights.Model.csproj" />
+  </ItemGroup>
+
 </Project>

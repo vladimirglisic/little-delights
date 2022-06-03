@@ -1,6 +1,7 @@
 using LittleDelights.Contract;
 using LittleDelights.Model.Entities;
 using LittleDelights.Model.Enums;
+using LittleDelights.Model.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -33,7 +34,7 @@ namespace LittleDelights.Tests
             cart.AddItem(wineRed112DaysOld.Id, 2);
             cart.AddItem(wineSparkling30DaysOld.Id, 1);
 
-            ICheckout checkout = new Checkout();
+            ICheckout checkout = new Checkout(now);
             checkout.CreateReceipt(cart);
         }
     }

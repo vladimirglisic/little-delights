@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LittleDelights.Contract\LittleDelights.Contract.csproj" />
     <ProjectReference Include="..\LittleDelights.Model\LittleDelights.Model.csproj" />
+    <ProjectReference Include="..\LittleDelights.Services\LittleDelights.Services.csproj" />
   </ItemGroup>
 
 </Project>

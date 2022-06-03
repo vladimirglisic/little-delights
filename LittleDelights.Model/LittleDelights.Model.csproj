@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LittleDelights.Common\LittleDelights.Common.csproj" />
-    <ProjectReference Include="..\LittleDelights.Contract\LittleDelights.Contract.csproj" />
   </ItemGroup>
 
 </Project>

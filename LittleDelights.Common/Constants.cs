@@ -11,5 +11,10 @@ namespace LittleDelights.Common
             public const decimal RedWine = 5;
             public const decimal SparklingWine = 7;
         }
+
+        public class Receipt
+        {
+            public const string Total = "Total";
+        }
     }
 }

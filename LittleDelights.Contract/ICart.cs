@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LittleDelights.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace LittleDelights.Contract
 {
     public interface ICart
     {
+        List<CartItem> CartItems { get; set; }
+
         /// <summary>
         /// Adds a new item into the shopping cart
         /// </summary>
