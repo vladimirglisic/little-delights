@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LittleDelights.Model
+namespace LittleDelights.Model.Enums
 {
-    public class Item
+    public enum WineCategory
     {
-        public Guid Id { get; set; }
+        Red = 1,
+        Sparkling = 2,
     }
 }

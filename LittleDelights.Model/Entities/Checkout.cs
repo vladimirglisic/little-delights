@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LittleDelights.Model
+namespace LittleDelights.Model.Entities
 {
     public class Checkout : ICheckout
     {
@@ -17,7 +17,7 @@ namespace LittleDelights.Model
 
         public void CreateReceipt(ICart cart)
         {
-            // create new checkout in the repository
+            // create a new checkout in the repository
 
             throw new NotImplementedException();
         }

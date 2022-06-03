@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LittleDelights.Model
+namespace LittleDelights.Model.Entities
 {
     public class Chart : ICart
     {
