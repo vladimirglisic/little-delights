@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LittleDelights.Model.Enums
 {
-    public enum WineCategory
+    public enum WineType
     {
         Red = 1,
         Sparkling = 2,

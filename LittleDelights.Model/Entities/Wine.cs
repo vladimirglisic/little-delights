@@ -10,13 +10,13 @@ namespace LittleDelights.Model.Entities
 {
     public class Wine : Item
     {
-        public Wine(DateTime producedOn, WineCategory category)
+        public Wine(DateTime producedOn, WineType type)
         {
             ProducedOn = producedOn;
-            StartPrice = category switch
+            StartPrice = type switch
             {
-                WineCategory.Red => Constants.StartPrice.RedWine,
-                WineCategory.Sparkling => Constants.StartPrice.SparklingWine,
+                WineType.Red => Constants.StartPrice.RedWine,
+                WineType.Sparkling => Constants.StartPrice.SparklingWine,
                 _ => throw new NotImplementedException(), // todo: vg
             };
         }
