@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LittleDelights.Contract
+namespace LittleDelights.Contract.Interfaces
 {
     public interface ICheckout
     {

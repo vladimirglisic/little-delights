@@ -1,4 +1,4 @@
-using LittleDelights.Contract;
+using LittleDelights.Contract.Interfaces;
 using LittleDelights.Model.Entities;
 using LittleDelights.Model.Enums;
 using LittleDelights.Model.Services;

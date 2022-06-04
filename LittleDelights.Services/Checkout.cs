@@ -1,5 +1,5 @@
 ﻿using LittleDelights.Common;
-using LittleDelights.Contract;
+using LittleDelights.Contract.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
