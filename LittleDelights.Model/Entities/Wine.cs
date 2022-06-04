@@ -10,6 +10,8 @@ namespace LittleDelights.Model.Entities
 {
     public class Wine : Item
     {
+        public override string Name => Constants.ItemNames.Wine;
+
         public Wine(DateTime producedOn, WineType type)
         {
             ProducedOn = producedOn;

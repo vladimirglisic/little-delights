@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
@@ -15,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LittleDelights.Contract\LittleDelights.Contract.csproj" />
+    <ProjectReference Include="..\LittleDelights.Data\LittleDelights.Data.csproj" />
     <ProjectReference Include="..\LittleDelights.Model\LittleDelights.Model.csproj" />
     <ProjectReference Include="..\LittleDelights.Services\LittleDelights.Services.csproj" />
   </ItemGroup>

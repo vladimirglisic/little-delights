@@ -9,6 +9,8 @@ namespace LittleDelights.Model.Entities
 {
     public class Milk : Item
     {
+        public override string Name => Constants.ItemNames.Milk;
+
         public Milk(DateTime bestBefore)
         {
             BestBefore = bestBefore;

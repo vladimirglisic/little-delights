@@ -28,7 +28,7 @@ namespace LittleDelights.Model.Entities
                 Receipt.Add(new ReceiptLine(cartItem.Item.Name, cartItem.Quantity * cartItem.Item.GetPrice(CreatedOn)));
             }
 
-            Receipt.Add(new ReceiptLine(Constants.Receipt.Total, Receipt.Sum(x => x.Price)));
+            Receipt.Add(new ReceiptLine(Constants.ItemNames.Total, Receipt.Sum(x => x.Price)));
         }
     }
 }

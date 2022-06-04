@@ -1,3 +1,8 @@
+using LittleDelights.Contract.Interfaces;
+using LittleDelights.Data;
+using LittleDelights.Data.Contract.Repositories;
+using LittleDelights.Data.Repositories;
+using LittleDelights.Model.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +37,10 @@ namespace LittleDelights.WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LittleDelights.WebApi", Version = "v1" });
             });
+
+            services.AddSingleton<Context>();
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<ICart, Cart>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

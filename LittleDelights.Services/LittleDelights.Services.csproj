@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LittleDelights.Contract\LittleDelights.Contract.csproj" />
+    <ProjectReference Include="..\LittleDelights.Data.Contract\LittleDelights.Data.Contract.csproj" />
     <ProjectReference Include="..\LittleDelights.Model\LittleDelights.Model.csproj" />
   </ItemGroup>
 

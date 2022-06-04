@@ -9,6 +9,8 @@ namespace LittleDelights.Model.Entities
 {
     public class Fish : Item
     {
+        public override string Name => Constants.ItemNames.Fish;
+
         public Fish(DateTime capturedOn)
         {
             CapturedOn = capturedOn;

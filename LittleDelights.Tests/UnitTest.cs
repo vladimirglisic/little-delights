@@ -1,7 +1,11 @@
 using LittleDelights.Contract.Interfaces;
+using LittleDelights.Data;
+using LittleDelights.Data.Contract.Repositories;
+using LittleDelights.Data.Repositories;
 using LittleDelights.Model.Entities;
 using LittleDelights.Model.Enums;
 using LittleDelights.Model.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -10,32 +14,53 @@ namespace LittleDelights.Tests
     [TestClass]
     public class UnitTest
     {
+        private readonly IItemRepository itemRepository;
+        private readonly ICart cart;
+
+        public UnitTest()
+        {
+            var services = new ServiceCollection();
+
+            services.AddSingleton<Context>();
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<ICart, Cart>();
+
+            var serviceProvider = services.BuildServiceProvider();
+
+            itemRepository = serviceProvider.GetService<IItemRepository>();
+            cart = serviceProvider.GetService<ICart>();
+        }
+
         [TestMethod]
         public void Final()
         {
+            // prepare
             DateTime now = new DateTime(2022, 6, 1);
             DateTime twoDaysAgo = now.AddDays(-2);
             DateTime tenYearsAgo = now.AddYears(-10);
             DateTime _112DaysAgo = now.AddDays(-112);
             DateTime _30DaysAgo = now.AddDays(-30);
 
-            var milkFresh = new Milk(now);
-            var milk2DaysOverBB = new Milk(twoDaysAgo);
+            var milkFresh = itemRepository.AddItem(new Milk(now));
+            var milk2DaysOverBB = itemRepository.AddItem(new Milk(twoDaysAgo));
             //var fish ??
-            var wineRed10YearsOld = new Wine(tenYearsAgo, WineType.Red);
-            var wineRed112DaysOld = new Wine(_112DaysAgo, WineType.Red);
-            var wineSparkling30DaysOld = new Wine(_30DaysAgo, WineType.Sparkling);
+            var wineRed10YearsOld = itemRepository.AddItem(new Wine(tenYearsAgo, WineType.Red));
+            var wineRed112DaysOld = itemRepository.AddItem(new Wine(_112DaysAgo, WineType.Red));
+            var wineSparkling30DaysOld = itemRepository.AddItem(new Wine(_30DaysAgo, WineType.Sparkling));
 
-            ICart cart = new Cart();
-            cart.AddItem(milkFresh.Id, 1);
-            cart.AddItem(milk2DaysOverBB.Id, 1);
+            // execute
+            cart.AddItem(milkFresh, 1);
+            cart.AddItem(milk2DaysOverBB, 1);
             //cart.AddItem(fish, 2);
-            cart.AddItem(wineRed10YearsOld.Id, 1);
-            cart.AddItem(wineRed112DaysOld.Id, 2);
-            cart.AddItem(wineSparkling30DaysOld.Id, 1);
+            cart.AddItem(wineRed10YearsOld, 1);
+            cart.AddItem(wineRed112DaysOld, 2);
+            cart.AddItem(wineSparkling30DaysOld, 1);
 
             ICheckout checkout = new Checkout(now);
             checkout.CreateReceipt(cart);
+
+            // assert
+
         }
     }
 }
