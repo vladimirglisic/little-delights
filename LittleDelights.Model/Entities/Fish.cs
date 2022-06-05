@@ -25,7 +25,7 @@ namespace LittleDelights.Model.Entities
             double price = StartPrice;
             for (int i = 0; i < diff; i++)
             {
-                price *= .9;
+                price *= .9; // -10%
             }
             return price;
         }
