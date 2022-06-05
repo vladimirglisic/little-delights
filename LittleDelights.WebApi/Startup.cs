@@ -39,7 +39,7 @@ namespace LittleDelights.WebApi
 
             services.AddSingleton<Context>();
             services.AddSingleton<ICart, Cart>();
-            services.AddScoped<ItemRepository>();
+            services.AddSingleton<ItemRepository>();
             services.AddScoped<ICheckout>(x =>
                 new Checkout(
                     x.GetRequiredService<ItemRepository>(),

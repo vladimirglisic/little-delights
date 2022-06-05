@@ -12,6 +12,9 @@ namespace LittleDelights.Contract.Interfaces
     {
         DateTime CheckoutDate { get; }
 
+        /// <summary>
+        /// List of item names, prices and total
+        /// </summary>
         List<ReceiptLine> Receipt { get; set; }
 
         /// <summary>
