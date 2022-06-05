@@ -10,7 +10,10 @@ namespace LittleDelights.Contract.Interfaces
 {
     public interface ICart
     {
-        List<CartItem> CartItems { get; set; }
+        /// <summary>
+        /// List of item ids and quantities
+        /// </summary>
+        Dictionary<Guid, int> Items { get; set; }
 
         /// <summary>
         /// Adds a new item into the shopping cart

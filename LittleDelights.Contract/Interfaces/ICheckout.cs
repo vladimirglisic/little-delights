@@ -10,7 +10,7 @@ namespace LittleDelights.Contract.Interfaces
 {
     public interface ICheckout
     {
-        DateTime CreatedOn { get; }
+        DateTime CheckoutDate { get; }
 
         List<ReceiptLine> Receipt { get; set; }
 

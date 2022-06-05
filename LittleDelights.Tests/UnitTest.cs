@@ -13,38 +13,20 @@ namespace LittleDelights.Tests
     [TestClass]
     public class UnitTest
     {
-        private readonly ItemRepository itemRepository;
-        private readonly ICart cart;
-        private readonly ICheckout checkout;
-        private readonly DateTime now;
+        private ItemRepository itemRepository;
 
-        public UnitTest()
+        [TestInitialize]
+        public void Initialize()
         {
-            now = new DateTime(2022, 6, 1);
-
-            var services = new ServiceCollection();
-
-            services.AddSingleton<Context>();
-            services.AddScoped<ItemRepository>();
-            services.AddScoped<ICart, Cart>();
-            services.AddScoped<ICheckout>(x =>
-                new Checkout(
-                    x.GetRequiredService<ItemRepository>(),
-                    now
-                )
-            );
-
-            var serviceProvider = services.BuildServiceProvider();
-
-            itemRepository = serviceProvider.GetService<ItemRepository>();
-            cart = serviceProvider.GetService<ICart>();
-            checkout = serviceProvider.GetService<ICheckout>();
+            var dataContext = new Context();
+            itemRepository = new ItemRepository(dataContext);
         }
 
         [TestMethod]
         public void Final()
         {
             // prepare
+            DateTime now = new DateTime(2022, 6, 1);
             DateTime twoDaysAgo = now.AddDays(-2);
             DateTime tenYearsAgo = now.AddYears(-10);
             DateTime _112DaysAgo = now.AddDays(-112);
@@ -58,6 +40,7 @@ namespace LittleDelights.Tests
             var wineSparkling30DaysOld = itemRepository.AddItem(new Wine(_30DaysAgo, WineType.Sparkling));
 
             // execute
+            var cart = new Cart();
             cart.AddItem(milkFresh, 1);
             cart.AddItem(milk2DaysOverBB, 1);
             //cart.AddItem(fish, 2);
@@ -65,6 +48,7 @@ namespace LittleDelights.Tests
             cart.AddItem(wineRed112DaysOld, 2);
             cart.AddItem(wineSparkling30DaysOld, 1);
 
+            var checkout = new Checkout(itemRepository, now);
             checkout.CreateReceipt(cart);
 
             // assert

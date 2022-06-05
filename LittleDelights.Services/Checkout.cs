@@ -14,23 +14,25 @@ namespace LittleDelights.Services
     {
         private readonly ItemRepository itemRepository;
 
-        public DateTime CreatedOn { get; }
+        public DateTime CheckoutDate { get; }
 
         public List<ReceiptLine> Receipt { get; set; }
 
-        public Checkout(ItemRepository itemRepository, DateTime createdOn)
+        public Checkout(ItemRepository itemRepository, DateTime now)
         {
             this.itemRepository = itemRepository;
-            CreatedOn = createdOn;
+            CheckoutDate = now;
         }
 
         public void CreateReceipt(ICart cart)
         {
             Receipt = new List<ReceiptLine>();
 
-            foreach(var cartItem in cart.CartItems)
+            foreach(var itemQuantity in cart.Items)
             {
-                Receipt.Add(new ReceiptLine(cartItem.Item.Name, cartItem.Quantity * cartItem.Item.GetPrice(CreatedOn)));
+                var item = itemRepository.GetItem(itemQuantity.Key);
+
+                Receipt.Add(new ReceiptLine(item.Name, itemQuantity.Value * item.GetPrice(CheckoutDate)));
             }
 
             Receipt.Add(new ReceiptLine(Constants.ItemNames.Total, Receipt.Sum(x => x.Price)));

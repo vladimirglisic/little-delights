@@ -9,24 +9,18 @@ namespace LittleDelights.Services
 {
     public class Cart : ICart
     {
-        private readonly ItemRepository itemRepository;
-
-        public Cart(ItemRepository itemRepository)
-        {
-            this.itemRepository = itemRepository;
-        }
-
-        public List<CartItem> CartItems { get; set; }
+        public Dictionary<Guid, int> Items { get; set; } = new Dictionary<Guid, int>();
 
         public void AddItem(Guid itemId, int quantity)
         {
-            // add an item to the cart
-            // what if item doesn't exist in items repo?
-            // what if item is already in the cart? - add it again
+            // if item is already in the cart, add quantity to existing item
+            if (Items.ContainsKey(itemId))
+            {
+                Items[itemId] = Items[itemId] + quantity;
+                return;
+            }
 
-            var item = itemRepository.GetItem(itemId);
-
-            throw new NotImplementedException();
+            Items[itemId] = quantity;
         }
     }
 }
