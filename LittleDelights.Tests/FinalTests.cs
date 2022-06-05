@@ -59,8 +59,6 @@ namespace LittleDelights.Tests
             Assert.AreEqual(234, checkout.Receipt[4].Price, "2x Red Wine (112 days)");
             Assert.AreEqual(37, checkout.Receipt[5].Price, "1x Red Wind (30 days)");
             Assert.AreEqual(484.37, checkout.Receipt[6].Price, .5, "Total");
-
-
         }
     }
 }
