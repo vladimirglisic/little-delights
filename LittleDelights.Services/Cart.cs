@@ -1,16 +1,17 @@
 ﻿using LittleDelights.Contract.Interfaces;
-using LittleDelights.Data.Contract.Repositories;
+using LittleDelights.Contract.Model;
+using LittleDelights.Data.Repositories;
 using LittleDelights.Model.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace LittleDelights.Model.Services
+namespace LittleDelights.Services
 {
     public class Cart : ICart
     {
-        private readonly IItemRepository itemRepository;
+        private readonly ItemRepository itemRepository;
 
-        public Cart(IItemRepository itemRepository)
+        public Cart(ItemRepository itemRepository)
         {
             this.itemRepository = itemRepository;
         }

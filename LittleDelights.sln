@@ -3,21 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleDelights.Model", "LittleDelights.Model\LittleDelights.Model.csproj", "{496A69F2-9F0D-4E55-993F-F2302D69A478}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleDelights.Model", "LittleDelights.Model\LittleDelights.Model.csproj", "{496A69F2-9F0D-4E55-993F-F2302D69A478}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleDelights.Data", "LittleDelights.Data\LittleDelights.Data.csproj", "{815F86DB-66CA-4971-BED4-B07512E53822}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleDelights.Data", "LittleDelights.Data\LittleDelights.Data.csproj", "{815F86DB-66CA-4971-BED4-B07512E53822}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleDelights.WebApi", "LittleDelights.WebApi\LittleDelights.WebApi.csproj", "{1F7E77C5-141D-4943-A72D-3116E7DCFC2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleDelights.WebApi", "LittleDelights.WebApi\LittleDelights.WebApi.csproj", "{1F7E77C5-141D-4943-A72D-3116E7DCFC2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleDelights.Services", "LittleDelights.Services\LittleDelights.Services.csproj", "{DEB515AE-172E-4B09-BA39-A0847D721712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleDelights.Services", "LittleDelights.Services\LittleDelights.Services.csproj", "{DEB515AE-172E-4B09-BA39-A0847D721712}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleDelights.Tests", "LittleDelights.Tests\LittleDelights.Tests.csproj", "{E23DB1EF-282E-48CD-B346-E1F5594263DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleDelights.Tests", "LittleDelights.Tests\LittleDelights.Tests.csproj", "{E23DB1EF-282E-48CD-B346-E1F5594263DA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleDelights.Contract", "LittleDelights.Contract\LittleDelights.Contract.csproj", "{CA3D0BE9-6E83-43F1-BC31-D72D27749334}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleDelights.Common", "LittleDelights.Common\LittleDelights.Common.csproj", "{BE906180-B38B-429D-8C37-5FC199F9EEAE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LittleDelights.Data.Contract", "LittleDelights.Data.Contract\LittleDelights.Data.Contract.csproj", "{D37E5F23-C09A-41B6-914E-71EDCF2EE9D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LittleDelights.Common", "LittleDelights.Common\LittleDelights.Common.csproj", "{BE906180-B38B-429D-8C37-5FC199F9EEAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +51,6 @@ Global
 		{BE906180-B38B-429D-8C37-5FC199F9EEAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE906180-B38B-429D-8C37-5FC199F9EEAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE906180-B38B-429D-8C37-5FC199F9EEAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D37E5F23-C09A-41B6-914E-71EDCF2EE9D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D37E5F23-C09A-41B6-914E-71EDCF2EE9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D37E5F23-C09A-41B6-914E-71EDCF2EE9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D37E5F23-C09A-41B6-914E-71EDCF2EE9D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

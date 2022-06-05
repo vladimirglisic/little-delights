@@ -1,10 +1,9 @@
 using LittleDelights.Contract.Interfaces;
 using LittleDelights.Data;
-using LittleDelights.Data.Contract.Repositories;
 using LittleDelights.Data.Repositories;
 using LittleDelights.Model.Entities;
 using LittleDelights.Model.Enums;
-using LittleDelights.Model.Services;
+using LittleDelights.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -14,28 +13,38 @@ namespace LittleDelights.Tests
     [TestClass]
     public class UnitTest
     {
-        private readonly IItemRepository itemRepository;
+        private readonly ItemRepository itemRepository;
         private readonly ICart cart;
+        private readonly ICheckout checkout;
+        private readonly DateTime now;
 
         public UnitTest()
         {
+            now = new DateTime(2022, 6, 1);
+
             var services = new ServiceCollection();
 
             services.AddSingleton<Context>();
-            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<ItemRepository>();
             services.AddScoped<ICart, Cart>();
+            services.AddScoped<ICheckout>(x =>
+                new Checkout(
+                    x.GetRequiredService<ItemRepository>(),
+                    now
+                )
+            );
 
             var serviceProvider = services.BuildServiceProvider();
 
-            itemRepository = serviceProvider.GetService<IItemRepository>();
+            itemRepository = serviceProvider.GetService<ItemRepository>();
             cart = serviceProvider.GetService<ICart>();
+            checkout = serviceProvider.GetService<ICheckout>();
         }
 
         [TestMethod]
         public void Final()
         {
             // prepare
-            DateTime now = new DateTime(2022, 6, 1);
             DateTime twoDaysAgo = now.AddDays(-2);
             DateTime tenYearsAgo = now.AddYears(-10);
             DateTime _112DaysAgo = now.AddDays(-112);
@@ -56,7 +65,6 @@ namespace LittleDelights.Tests
             cart.AddItem(wineRed112DaysOld, 2);
             cart.AddItem(wineSparkling30DaysOld, 1);
 
-            ICheckout checkout = new Checkout(now);
             checkout.CreateReceipt(cart);
 
             // assert

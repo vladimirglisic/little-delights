@@ -1,4 +1,5 @@
-﻿using LittleDelights.Model.Entities;
+﻿using LittleDelights.Contract.Model;
+using LittleDelights.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

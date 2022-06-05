@@ -1,5 +1,4 @@
-﻿using LittleDelights.Data.Contract.Repositories;
-using LittleDelights.Model.Entities;
+﻿using LittleDelights.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LittleDelights.Data.Repositories
 {
-    public class ItemRepository : IItemRepository
+    public class ItemRepository
     {
         private readonly Context context;
 

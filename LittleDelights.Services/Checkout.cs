@@ -1,21 +1,26 @@
 ﻿using LittleDelights.Common;
 using LittleDelights.Contract.Interfaces;
+using LittleDelights.Contract.Model;
+using LittleDelights.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LittleDelights.Model.Entities
+namespace LittleDelights.Services
 {
     public class Checkout : ICheckout
     {
+        private readonly ItemRepository itemRepository;
+
         public DateTime CreatedOn { get; }
 
         public List<ReceiptLine> Receipt { get; set; }
 
-        public Checkout(DateTime createdOn)
+        public Checkout(ItemRepository itemRepository, DateTime createdOn)
         {
+            this.itemRepository = itemRepository;
             CreatedOn = createdOn;
         }
 

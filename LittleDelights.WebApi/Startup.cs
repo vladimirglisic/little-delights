@@ -1,8 +1,7 @@
 using LittleDelights.Contract.Interfaces;
 using LittleDelights.Data;
-using LittleDelights.Data.Contract.Repositories;
 using LittleDelights.Data.Repositories;
-using LittleDelights.Model.Services;
+using LittleDelights.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,8 +38,13 @@ namespace LittleDelights.WebApi
             });
 
             services.AddSingleton<Context>();
-            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<ItemRepository>();
             services.AddScoped<ICart, Cart>();
+            services.AddScoped<ICheckout>(x =>
+                new Checkout(
+                    x.GetRequiredService<ItemRepository>(),
+                    DateTime.Now)
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
