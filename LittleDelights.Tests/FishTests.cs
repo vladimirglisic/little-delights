@@ -39,5 +39,15 @@ namespace LittleDelights.Tests
             double price = fish.CalculatePrice(now);
             Assert.AreEqual(4.05, price);
         }
+
+        [TestMethod]
+        public void CalculatePrice_Fish_ProducedInFuture()
+        {
+            DateTime now = new DateTime(2022, 6, 1, 12, 0, 0);
+            DateTime captured = new DateTime(2022, 6, 3);
+            var fish = new Fish(captured);
+
+            Assert.ThrowsException<ArgumentException>(() => fish.CalculatePrice(now), "Fish captured in future");
+        }
     }
 }

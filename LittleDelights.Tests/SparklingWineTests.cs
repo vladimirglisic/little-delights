@@ -62,5 +62,15 @@ namespace LittleDelights.Tests
             double price = wine.CalculatePrice(now);
             Assert.AreEqual(200, price);
         }
+
+        [TestMethod]
+        public void CalculatePrice_Wine_ProducedInFuture()
+        {
+            DateTime now = new DateTime(2022, 6, 1, 12, 0, 0);
+            DateTime produced = new DateTime(2022, 6, 3);
+            var wine = new Wine(produced, WineType.Sparkling);
+
+            Assert.ThrowsException<ArgumentException>(() => wine.CalculatePrice(now), "Wine produced in future");
+        }
     }
 }

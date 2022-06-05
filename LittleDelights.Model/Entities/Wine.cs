@@ -36,6 +36,7 @@ namespace LittleDelights.Model.Entities
         public override double CalculatePrice(DateTime now)
         {
             int diff = (now.Date - ProducedOn.Date).Days;
+            if (diff < 0) throw new ArgumentException(Constants.ErrorMessages.ItemProducedInFuture);
             double price = StartPrice + diff;
             return Math.Min(price, Constants.ItemPrices.WineMaxPrice);
         }

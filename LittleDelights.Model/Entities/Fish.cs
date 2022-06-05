@@ -22,6 +22,7 @@ namespace LittleDelights.Model.Entities
         public override double CalculatePrice(DateTime now)
         {
             int diff = (now.Date - CapturedOn.Date).Days;
+            if (diff < 0) throw new ArgumentException(Constants.ErrorMessages.ItemProducedInFuture);
             double price = StartPrice;
             for (int i = 0; i < diff; i++)
             {

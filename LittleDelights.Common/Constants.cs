@@ -25,6 +25,7 @@ namespace LittleDelights.Common
         public class ErrorMessages
         {
             public const string WineTypeNotExist = "Wrong wine type";
+            public const string ItemProducedInFuture = "Item cannot be produced in future";
         }
     }
 }
