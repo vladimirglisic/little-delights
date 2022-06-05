@@ -31,7 +31,11 @@ namespace LittleDelights.WebApi.Controllers
             try
             {
                 checkout.CreateReceipt(cart);
-                return this.Ok(checkout.ToString());
+                return this.Ok(new
+                {
+                    Data = checkout.Receipt,
+                    Text = checkout.ToString(),
+                });
             }
             catch (Exception ex)
             {
