@@ -31,7 +31,11 @@ namespace LittleDelights.Services
             foreach(var itemQuantity in cart.Items)
             {
                 var item = itemRepository.GetItem(itemQuantity.Key);
-
+                if (item == null)
+                {
+                    // log: item not found
+                    continue;
+                }
                 Receipt.Add(new ReceiptLine(item.Name, itemQuantity.Value * item.GetPrice(CheckoutDate)));
             }
 

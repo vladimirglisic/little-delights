@@ -27,6 +27,8 @@ namespace LittleDelights.Data.Repositories
 
         public Item GetItem(Guid id)
         {
+            if (!context.Items.ContainsKey(id)) return null;
+
             return context.Items[id];
         }
     }
