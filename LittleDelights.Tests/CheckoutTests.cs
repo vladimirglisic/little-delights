@@ -33,12 +33,12 @@ namespace LittleDelights.Tests
             var fish2DaysOverCaptured = itemRepository.AddItem(new Fish(twoDaysAgo));
             Guid itemNotInRepository = Guid.NewGuid();
 
-            // execute
             var cart = new Cart();
             cart.AddItem(milkFresh, 1);
             cart.AddItem(fish2DaysOverCaptured, 2);
             cart.AddItem(itemNotInRepository, 1);
 
+            // execute
             var checkout = new Checkout(itemRepository, now);
             checkout.CreateReceipt(cart);
 
@@ -46,6 +46,21 @@ namespace LittleDelights.Tests
             Assert.AreEqual(3.7, checkout.Receipt[0].Price, "1x Milk (fresh)");
             Assert.AreEqual(8.1, checkout.Receipt[1].Price, "2x Fish (2 days)");
             Assert.AreEqual(11.8, checkout.Receipt[2].Price, "Total");
+        }
+
+        [TestMethod]
+        public void Checkout_EmptyCart()
+        {
+            // prepare
+            DateTime now = new DateTime(2022, 6, 1);
+            var cart = new Cart();
+
+            // execute
+            var checkout = new Checkout(itemRepository, now);
+            checkout.CreateReceipt(cart);
+
+            // assert
+            Assert.AreEqual(0, checkout.Receipt[0].Price, "Total");
         }
 
         [TestMethod]
