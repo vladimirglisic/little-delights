@@ -34,7 +34,7 @@ namespace LittleDelights.Tests
 
             var milkFresh = itemRepository.AddItem(new Milk(now));
             var milk2DaysOverBB = itemRepository.AddItem(new Milk(twoDaysAgo));
-            //var fish ??
+            var fish2DaysOverCaptured = itemRepository.AddItem(new Fish(twoDaysAgo));
             var wineRed10YearsOld = itemRepository.AddItem(new Wine(tenYearsAgo, WineType.Red));
             var wineRed112DaysOld = itemRepository.AddItem(new Wine(_112DaysAgo, WineType.Red));
             var wineSparkling30DaysOld = itemRepository.AddItem(new Wine(_30DaysAgo, WineType.Sparkling));
@@ -43,7 +43,7 @@ namespace LittleDelights.Tests
             var cart = new Cart();
             cart.AddItem(milkFresh, 1);
             cart.AddItem(milk2DaysOverBB, 1);
-            //cart.AddItem(fish, 2);
+            cart.AddItem(fish2DaysOverCaptured, 2);
             cart.AddItem(wineRed10YearsOld, 1);
             cart.AddItem(wineRed112DaysOld, 2);
             cart.AddItem(wineSparkling30DaysOld, 1);
@@ -52,6 +52,14 @@ namespace LittleDelights.Tests
             checkout.CreateReceipt(cart);
 
             // assert
+            Assert.AreEqual(3.7, checkout.Receipt[0].Price, "1x Milk (fresh)");
+            Assert.AreEqual(1.57, checkout.Receipt[1].Price, .5, "1x Milk (2 days)");
+            Assert.AreEqual(8.1, checkout.Receipt[2].Price, "2x Fish (2 days)");
+            Assert.AreEqual(200, checkout.Receipt[3].Price, "1x Red Wine (10 years)");
+            Assert.AreEqual(234, checkout.Receipt[4].Price, "2x Red Wine (112 days)");
+            Assert.AreEqual(37, checkout.Receipt[5].Price, "1x Red Wind (30 days)");
+            Assert.AreEqual(484.37, checkout.Receipt[6].Price, .5, "Total");
+
 
         }
     }
