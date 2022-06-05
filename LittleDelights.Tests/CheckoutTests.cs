@@ -23,7 +23,33 @@ namespace LittleDelights.Tests
         }
 
         [TestMethod]
-        public void CreateReceipt()
+        public void Checkout_ItemNotInRepo()
+        {
+            // prepare
+            DateTime now = new DateTime(2022, 6, 1);
+            DateTime twoDaysAgo = now.AddDays(-2);
+
+            var milkFresh = itemRepository.AddItem(new Milk(now));
+            var fish2DaysOverCaptured = itemRepository.AddItem(new Fish(twoDaysAgo));
+            Guid itemNotInRepository = Guid.NewGuid();
+
+            // execute
+            var cart = new Cart();
+            cart.AddItem(milkFresh, 1);
+            cart.AddItem(fish2DaysOverCaptured, 2);
+            cart.AddItem(itemNotInRepository, 1);
+
+            var checkout = new Checkout(itemRepository, now);
+            checkout.CreateReceipt(cart);
+
+            // assert
+            Assert.AreEqual(3.7, checkout.Receipt[0].Price, "1x Milk (fresh)");
+            Assert.AreEqual(8.1, checkout.Receipt[1].Price, "2x Fish (2 days)");
+            Assert.AreEqual(11.8, checkout.Receipt[2].Price, "Total");
+        }
+
+        [TestMethod]
+        public void Checkout_ToString()
         {
             // prepare
             DateTime now = new DateTime(2022, 6, 1);
