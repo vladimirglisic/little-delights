@@ -8,13 +8,13 @@ namespace LittleDelights.Contract.Model
 {
     public class ReceiptLine
     {
-        public ReceiptLine (string name, decimal price)
+        public ReceiptLine (string name, double price)
         {
             Name = name;
             Price = price;
         }
 
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
     }
 }

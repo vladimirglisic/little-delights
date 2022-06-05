@@ -10,8 +10,8 @@ namespace LittleDelights.Model.Entities
     {
         public abstract string Name { get; }
 
-        public decimal StartPrice { get; set; }
+        public double StartPrice { get; set; }
 
-        public abstract decimal GetPrice(DateTime now);
+        public abstract double CalculatePrice(DateTime now);
     }
 }

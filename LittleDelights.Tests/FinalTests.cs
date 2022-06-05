@@ -11,7 +11,7 @@ using System;
 namespace LittleDelights.Tests
 {
     [TestClass]
-    public class UnitTest
+    public class FinalTests
     {
         private ItemRepository itemRepository;
 

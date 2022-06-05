@@ -36,7 +36,7 @@ namespace LittleDelights.Services
                     // log: item not found
                     continue;
                 }
-                Receipt.Add(new ReceiptLine(item.Name, itemQuantity.Value * item.GetPrice(CheckoutDate)));
+                Receipt.Add(new ReceiptLine(item.Name, itemQuantity.Value * item.CalculatePrice(CheckoutDate)));
             }
 
             Receipt.Add(new ReceiptLine(Constants.ItemNames.Total, Receipt.Sum(x => x.Price)));

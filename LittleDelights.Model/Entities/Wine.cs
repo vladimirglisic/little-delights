@@ -33,7 +33,7 @@ namespace LittleDelights.Model.Entities
 
         public DateTime ProducedOn { get; }
 
-        public override decimal GetPrice(DateTime now)
+        public override double CalculatePrice(DateTime now)
         {
             throw new NotImplementedException();
         }

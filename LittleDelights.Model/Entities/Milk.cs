@@ -19,9 +19,16 @@ namespace LittleDelights.Model.Entities
 
         public DateTime BestBefore { get; }
 
-        public override decimal GetPrice(DateTime now)
+        public override double CalculatePrice(DateTime now)
         {
-            throw new NotImplementedException();
+            int diff = (now.Date - BestBefore.Date).Days;
+            double price = StartPrice;
+            for (int i = 0; i < diff; i++)
+            {
+                if (i == 0) price *= .5;
+                else price *= .85; // -15%
+            }
+            return price;
         }
     }
 }

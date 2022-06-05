@@ -19,9 +19,15 @@ namespace LittleDelights.Model.Entities
 
         public DateTime CapturedOn { get; }
 
-        public override decimal GetPrice(DateTime now)
+        public override double CalculatePrice(DateTime now)
         {
-            throw new NotImplementedException();
+            int diff = (now.Date - CapturedOn.Date).Days;
+            double price = StartPrice;
+            for (int i = 0; i < diff; i++)
+            {
+                price *= .9;
+            }
+            return price;
         }
     }
 }

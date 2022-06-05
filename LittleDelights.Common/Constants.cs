@@ -6,10 +6,10 @@ namespace LittleDelights.Common
     {
         public class StartPrice
         {
-            public const decimal Milk = 3.7m;
-            public const decimal Fish = 5;
-            public const decimal RedWine = 5;
-            public const decimal SparklingWine = 7;
+            public const double Milk = 3.7;
+            public const double Fish = 5;
+            public const double RedWine = 5;
+            public const double SparklingWine = 7;
         }
 
         public class ItemNames

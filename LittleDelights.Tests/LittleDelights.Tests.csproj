@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LittleDelights.Common\LittleDelights.Common.csproj" />
     <ProjectReference Include="..\LittleDelights.Contract\LittleDelights.Contract.csproj" />
     <ProjectReference Include="..\LittleDelights.Data\LittleDelights.Data.csproj" />
     <ProjectReference Include="..\LittleDelights.Model\LittleDelights.Model.csproj" />
