@@ -1,10 +1,4 @@
-using LittleDelights.Contract.Interfaces;
-using LittleDelights.Data;
-using LittleDelights.Data.Repositories;
 using LittleDelights.Model.Entities;
-using LittleDelights.Model.Enums;
-using LittleDelights.Services;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -13,15 +7,6 @@ namespace LittleDelights.Tests
     [TestClass]
     public class FishTests
     {
-        private ItemRepository itemRepository;
-
-        [TestInitialize]
-        public void Initialize()
-        {
-            var dataContext = new Context();
-            itemRepository = new ItemRepository(dataContext);
-        }
-
         [TestMethod]
         public void CalculatePrice_Fish_Fresh()
         {

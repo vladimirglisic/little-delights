@@ -14,7 +14,7 @@ namespace LittleDelights.Model.Entities
         public Fish(DateTime capturedOn)
         {
             CapturedOn = capturedOn;
-            StartPrice = Constants.StartPrice.Fish;
+            StartPrice = Constants.ItemPrices.Fish;
         }
 
         public DateTime CapturedOn { get; }

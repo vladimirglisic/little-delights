@@ -4,12 +4,13 @@ namespace LittleDelights.Common
 {
     public class Constants
     {
-        public class StartPrice
+        public class ItemPrices
         {
             public const double Milk = 3.7;
             public const double Fish = 5;
             public const double RedWine = 5;
             public const double SparklingWine = 7;
+            public const double WineMaxPrice = 200;
         }
 
         public class ItemNames

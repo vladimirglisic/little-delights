@@ -25,8 +25,8 @@ namespace LittleDelights.Model.Entities
             this.type = type;
             StartPrice = type switch
             {
-                WineType.Red => Constants.StartPrice.RedWine,
-                WineType.Sparkling => Constants.StartPrice.SparklingWine,
+                WineType.Red => Constants.ItemPrices.RedWine,
+                WineType.Sparkling => Constants.ItemPrices.SparklingWine,
                 _ => throw new ArgumentException(Constants.ErrorMessages.WineTypeNotExist),
             };
         }
@@ -35,7 +35,9 @@ namespace LittleDelights.Model.Entities
 
         public override double CalculatePrice(DateTime now)
         {
-            throw new NotImplementedException();
+            int diff = (now.Date - ProducedOn.Date).Days;
+            double price = StartPrice + diff;
+            return Math.Min(price, Constants.ItemPrices.WineMaxPrice);
         }
     }
 }

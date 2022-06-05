@@ -14,7 +14,7 @@ namespace LittleDelights.Model.Entities
         public Milk(DateTime bestBefore)
         {
             BestBefore = bestBefore;
-            StartPrice = Constants.StartPrice.Milk;
+            StartPrice = Constants.ItemPrices.Milk;
         }
 
         public DateTime BestBefore { get; }
