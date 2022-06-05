@@ -42,7 +42,7 @@ namespace LittleDelights.WebApi.Controllers
         }
 
         /// <summary>
-        /// Retreive the list of item ids and quantities
+        /// Retreive cart item ids and quantities
         /// </summary>
         [HttpGet]
         public ActionResult GetItems()

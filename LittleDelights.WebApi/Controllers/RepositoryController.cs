@@ -1,35 +1,36 @@
 ﻿using LittleDelights.Contract.Interfaces;
-using LittleDelights.Services;
+using LittleDelights.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LittleDelights.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CheckoutController : ControllerBase
+    public class ItemController : ControllerBase
     {
-        private readonly ICheckout checkout;
+        private readonly ItemRepository itemRepository;
         private readonly ILogger<CartController> _logger;
 
-        public CheckoutController(ICheckout checkout, ILogger<CartController> logger)
+        public ItemController(ItemRepository itemRepository, ILogger<CartController> logger)
         {
-            this.checkout = checkout;
+            this.itemRepository = itemRepository;
             _logger = logger;
         }
 
         /// <summary>
-        /// Creates a receipt for all items of the shopping cart
+        /// Retreive the list of items
         /// </summary>
-        /// <param name="cart">the shopping cart</param>
-        [HttpPost]
-        public ActionResult CreateReceipt(Cart cart)
+        [HttpGet("[action]")]
+        public ActionResult GetItems()
         {
             try
             {
-                checkout.CreateReceipt(cart);
-                return this.Ok(checkout.Receipt);
+                return Ok(itemRepository.GetItems());
             }
             catch (Exception ex)
             {

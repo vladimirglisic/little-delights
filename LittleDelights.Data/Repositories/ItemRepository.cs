@@ -31,5 +31,10 @@ namespace LittleDelights.Data.Repositories
 
             return context.Items[id];
         }
+
+        public Dictionary<Guid, Item> GetItems()
+        {
+            return context.Items;
+        }
     }
 }
