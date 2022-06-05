@@ -16,8 +16,14 @@ namespace LittleDelights.Common
         {
             public const string Milk = "Milk";
             public const string Fish = "Fish";
-            public const string Wine = "Wine";
+            public const string WineRed = "Red Wine";
+            public const string WineSparkling = "Sparkling Wine";
             public const string Total = "Total";
+        }
+
+        public class ErrorMessages
+        {
+            public const string WineTypeNotExist = "Wrong wine type";
         }
     }
 }

@@ -10,16 +10,24 @@ namespace LittleDelights.Model.Entities
 {
     public class Wine : Item
     {
-        public override string Name => Constants.ItemNames.Wine;
+        private WineType type;
+
+        public override string Name => type switch
+        {
+            WineType.Red => Constants.ItemNames.WineRed,
+            WineType.Sparkling => Constants.ItemNames.WineSparkling,
+            _ => throw new ArgumentException(Constants.ErrorMessages.WineTypeNotExist),
+        };
 
         public Wine(DateTime producedOn, WineType type)
         {
             ProducedOn = producedOn;
+            this.type = type;
             StartPrice = type switch
             {
                 WineType.Red => Constants.StartPrice.RedWine,
                 WineType.Sparkling => Constants.StartPrice.SparklingWine,
-                _ => throw new NotImplementedException(), // todo: vg
+                _ => throw new ArgumentException(Constants.ErrorMessages.WineTypeNotExist),
             };
         }
 
